@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SDN延迟</title>
+</head>
+<body>
+<h3 style="color: cornflowerblue">
+   数据来源: 选取两节点做ping操作，100个包，取平均值。延迟数据。
+</h3>
+    <form action="{% url "speed_display" %}" method="post">
+        <div>
+            <div style="float: left;margin-right: 5%;">
+                <select name="city_left">
+                    <option value ="请选择">请选择</option>
+                    {% for city in city_list %}
+                        <option value ="{{ city.id }}">{{ city.city_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <select name="city_right">
+                    <option value ="请选择">请选择</option>
+                    {% for city in city_list %}
+                        <option value ="{{ city.id }}">{{ city.city_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div id="aaa">
+            <input type="text" value="{{ speed |default_if_none:"0"  }}" style="text-align: center;">
+        </div>
+
+        <div><button onclick="s_btn()">查询</button></div>
+    {% csrf_token %}
+    </form>
+
+
+
+    <script language="JavaScript">
+        function s_btn() {
+
+        }
+    </script>
+
+</body>
+</html>
